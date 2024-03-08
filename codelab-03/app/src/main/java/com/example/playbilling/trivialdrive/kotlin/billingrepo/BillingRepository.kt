@@ -45,35 +45,35 @@ class BillingRepository private constructor(private val application: Application
     lateinit private var localCacheBillingClient: LocalBillingDb
 
     val subsSkuDetailsListLiveData: LiveData<List<AugmentedSkuDetails>> by lazy {
-        if (::localCacheBillingClient.isInitialized == false) {
+        if (::localCacheBillingClient.isInitialized) {
             localCacheBillingClient = LocalBillingDb.getInstance(application)
         }
         localCacheBillingClient.skuDetailsDao().getSubscriptionSkuDetails()
     }
 
     val inappSkuDetailsListLiveData: LiveData<List<AugmentedSkuDetails>> by lazy {
-        if (::localCacheBillingClient.isInitialized == false) {
+        if (::localCacheBillingClient.isInitialized) {
             localCacheBillingClient = LocalBillingDb.getInstance(application)
         }
         localCacheBillingClient.skuDetailsDao().getInappSkuDetails()
     }
 
     val gasTankLiveData: LiveData<GasTank> by lazy {
-        if (::localCacheBillingClient.isInitialized == false) {
+        if (::localCacheBillingClient.isInitialized) {
             localCacheBillingClient = LocalBillingDb.getInstance(application)
         }
         localCacheBillingClient.entitlementsDao().getGasTank()
     }
 
     val premiumCarLiveData: LiveData<PremiumCar> by lazy {
-        if (::localCacheBillingClient.isInitialized == false) {
+        if (::localCacheBillingClient.isInitialized) {
             localCacheBillingClient = LocalBillingDb.getInstance(application)
         }
         localCacheBillingClient.entitlementsDao().getPremiumCar()
     }
 
     val goldStatusLiveData: LiveData<GoldStatus> by lazy {
-        if (::localCacheBillingClient.isInitialized == false) {
+        if (::localCacheBillingClient.isInitialized) {
             localCacheBillingClient = LocalBillingDb.getInstance(application)
         }
         localCacheBillingClient.entitlementsDao().getGoldStatus()
